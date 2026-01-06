@@ -51,4 +51,8 @@
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\shaders\default.frag" />
+    <None Include="assets\shaders\default.vert" />
+  </ItemGroup>
 </Project>

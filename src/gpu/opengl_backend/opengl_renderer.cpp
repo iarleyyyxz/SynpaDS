@@ -1,28 +1,13 @@
 #include "../opengl_backend/opengl_renderer.h"
 #include <cstdio>
 #include <cstring>
+#include <fstream>   // Para ifstream/ofstream
+#include <string>    // Para std::string
 
 // Vertex + Fragment shader simples
-const char* vertexShaderSrc = R"(
-#version 330 core
-layout(location = 0) in vec2 aPos;
-layout(location = 1) in vec2 aTex;
-out vec2 texCoord;
-void main() {
-    texCoord = aTex;
-    gl_Position = vec4(aPos, 0.0, 1.0);
-}
-)";
+const char* vertexShaderSrc = readFile("assets/shaders/default.vert").c_str();
 
-const char* fragmentShaderSrc = R"(
-#version 330 core
-in vec2 texCoord;
-out vec4 FragColor;
-uniform sampler2D screenTexture;
-void main() {
-    FragColor = texture(screenTexture, texCoord);
-}
-)";
+const char* fragmentShaderSrc = readFile("assets/shaders/default.frag").c_str();
 
 OpenGLRenderer::OpenGLRenderer() {
     setupTexture();
@@ -118,4 +103,16 @@ void OpenGLRenderer::renderFrame(const uint8_t* vram) {
 
 void OpenGLRenderer::clear() {
     glClear(GL_COLOR_BUFFER_BIT);
+}
+
+std::string readFile(const std::string &filePath) {
+    std::ifstream file(filePath, std::ios::in | std::ios::binary);
+    if (!file.is_open()) return "";
+
+    std::string content;
+    file.seekg(0, std::ios::end);          
+    content.resize(file.tellg());         
+    file.seekg(0, std::ios::beg);         
+    file.read(&content[0], content.size()); 
+    return content;
 }

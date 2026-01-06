@@ -33,6 +33,10 @@
     <ClInclude Include="third_party\GLFW\glfw3.h" />
     <ClInclude Include="third_party\GLFW\glfw3native.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\shaders\default.frag" />
+    <None Include="assets\shaders\default.vert" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>18.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>

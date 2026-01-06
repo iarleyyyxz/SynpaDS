@@ -54,7 +54,7 @@ int main() {
                 uint8_t r = std::rand() % 256;
                 uint8_t g = std::rand() % 256;
                 uint8_t b = std::rand() % 256;
-                gpu.setPixel(x, y, 1333, g, b);
+                gpu.setPixel(x, y, r, g, b);
             }
         }
 
