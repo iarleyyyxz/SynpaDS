@@ -1,4 +1,4 @@
-# 🍋‍🟩 Synpad: open-source Nintendo DS emulator
+# 🍋‍🟩 SynpaDS: open-source Nintendo DS emulator
 <img width="1920" height="700" alt="BannerPNG" src="https://github.com/user-attachments/assets/8df4b823-c0c7-4006-9bb1-3bb94dc21242" />
 
 **Synpad** is an experimental, open-source emulator for the Nintendo DS, written in C++. Its main goal is to provide a modular, extensible foundation for emulating the ARM9 CPU, memory, and GPU of the DS while rendering graphics using OpenGL via GLAD and GLFW.
