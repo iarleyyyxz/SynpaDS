@@ -1,6 +1,0 @@
-﻿  Scanning sources for module dependencies...
-  window.cpp
-C:\Users\Iarley\source\repos\synpad\synpad\src\core\window.cpp(44,25): warning C4244: 'argumento': conversão de 'time_t' para 'unsigned int', possível perda de dados
-C:\Users\Iarley\source\repos\synpad\synpad\src\core\window.cpp(57,36): warning C4305: 'argumento': truncamento de 'int' para 'uint8_t'
-C:\Users\Iarley\source\repos\synpad\synpad\src\core\window.cpp(57,36): warning C4309: 'argumento': truncamento de valor constante
-  synpad.vcxproj -> C:\Users\Iarley\source\repos\synpad\x64\Debug\synpad.exe
