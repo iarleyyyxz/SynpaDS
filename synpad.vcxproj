@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="src\core\arm9\cpu.h" />
     <ClCompile Include="src\core\glad.c" />
+    <ClCompile Include="src\core\memory\memory.cpp" />
     <ClCompile Include="src\core\window.cpp" />
     <ClCompile Include="src\gpu\opengl_backend\opengl_renderer.cpp" />
   </ItemGroup>

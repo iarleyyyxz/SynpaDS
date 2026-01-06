@@ -1,37 +1,27 @@
 #pragma once
 #include <cstdint>
+#include <cstdio>
 #include <cstring>
 
-constexpr uint32_t MEM_SIZE = 1024 * 1024; // 1 MB
+constexpr uint32_t MEM_SIZE = 1024 * 1024; // 1 MB (RAM simples por enquanto)
 
 struct Memory {
-	uint8_t data[MEM_SIZE];
+public:
+    uint8_t data[MEM_SIZE];
 
-	Memory() {
-		std::memset(data, 0, sizeof(data));
-	}
-
-    uint32_t read32(uint32_t addr) const {
-        if (addr + 3 >= MEM_SIZE) {
-            printf("ERRO: endereço inválido na leitura 0x%08X\n", addr);
-            return 0;
-        }
-        return data[addr] | (data[addr + 1] << 8) | (data[addr + 2] << 16) | (data[addr + 3] << 24);
+    Memory() {
+        reset();
     }
 
-
-    void write32(uint32_t addr, uint32_t value) {
-        if (addr + 3 >= MEM_SIZE) {
-            printf("ERRO: write32 endereço inválido 0x%08X\n", addr);
-            return;
-        }
-        data[addr] = value & 0xFF;
-        data[addr + 1] = (value >> 8) & 0xFF;
-        data[addr + 2] = (value >> 16) & 0xFF;
-        data[addr + 3] = (value >> 24) & 0xFF;
+    void reset() {
+        std::memset(data, 0, sizeof(data));
     }
 
+    uint8_t read8(uint32_t addr) const;
+    uint16_t read16(uint32_t addr) const;
+    uint32_t read32(uint32_t addr) const;
 
+    void write8(uint32_t addr, uint8_t value);
+    void write16(uint32_t addr, uint16_t value);
+    void write32(uint32_t addr, uint32_t value);
 };
-
-
