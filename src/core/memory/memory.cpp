@@ -33,6 +33,12 @@ uint8_t Memory::read8(uint32_t addr) {
 }
 
 uint16_t Memory::read16(uint32_t addr) {
+    // Timers
+    if (addr >= 0x04000100 && addr <= 0x0400010F) {
+        int id = (addr - 0x04000100) / 4;
+        bool high = addr & 2;
+        return high ? timers.readCNT_H(id) : timers.readCNT_L(id);
+    }
     return read8(addr) | (read8(addr + 1) << 8);
 }
 
@@ -65,6 +71,14 @@ void Memory::write8(uint32_t addr, uint8_t v) {
 }
 
 void Memory::write16(uint32_t addr, uint16_t v) {
+    if (addr >= 0x04000100 && addr <= 0x0400010F) {
+        int id = (addr - 0x04000100) / 4;
+        bool high = addr & 2;
+        if (high) timers.writeCNT_H(id, v);
+        else timers.writeCNT_L(id, v);
+        return;
+    }
+
     write8(addr, v & 0xFF);
     write8(addr + 1, v >> 8);
 }

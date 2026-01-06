@@ -2,6 +2,7 @@
 #include <cstdint>
 #include <cstdio>
 #include <cstring>
+#include "../timers/timers.h"
 
 struct Memory {
 
@@ -17,6 +18,8 @@ struct Memory {
     uint32_t IME = 0;
     uint32_t IE = 0;
     uint32_t IF = 0;
+
+    Timers timers;
 
     Memory();
 
